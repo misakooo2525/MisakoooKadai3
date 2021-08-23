@@ -16,18 +16,14 @@ class CalculationViewController: UIViewController {
     @IBOutlet private weak var switch2: UISwitch!
     
     @IBAction private func didTapCalculationButton(_ sender: UIButton) {
-        var number1 = Int(numberTextField1.text!) ?? 0
-        var number2 = Int(numberTextField2.text!) ?? 0
+        let number1 = Int(numberTextField1.text!) ?? 0
+        let number2 = Int(numberTextField2.text!) ?? 0
         
-        if switch1.isOn {
-            number1 *= -1
-        }
-        
-        if switch2.isOn {
-            number2 *= -1
-        }
-        enterdNumberLabel1.text = String(number1)
-        enterdNumberLabel2.text = String(number2)
-        calculationResultLabel.text = String(number1 + number2)
+        let signedNumber1 = switch1.isOn ? -number1 : number1
+        let signedNumber2 = switch2.isOn ? -number2 : number2
+
+        enterdNumberLabel1.text = String(signedNumber1)
+        enterdNumberLabel2.text = String(signedNumber2)
+        calculationResultLabel.text = String(signedNumber1 + signedNumber2)
     }
 }
